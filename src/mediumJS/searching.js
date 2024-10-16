@@ -1,8 +1,6 @@
 export const search = (arr, ele)=>{
 
  
-    
-
     let  right = arr.length-1
     let left = 0
 
@@ -20,8 +18,6 @@ right= mid-1
         if(arr[mid] < ele){
             left = mid +1
         }
-        rm -rf package-lock.json
-
 
     }
 

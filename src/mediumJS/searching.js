@@ -20,7 +20,9 @@ right= mid-1
         if(arr[mid] < ele){
             left = mid +1
         }
-        
+        rm -rf package-lock.json
+
+
     }
 
     return "not found "

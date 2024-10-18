@@ -6,7 +6,7 @@ export const fibonacci = (no)=>{
 
 for(let i = 2; i<=no ; i++){
 
-num = i-1 + i-2
+let num = i-1 + i-2
 fib.push(num)
 
 }

@@ -4,25 +4,14 @@ function negativeTimer() {
 
     const [timer, setTimer] = useState(0)
 
-    const negative = (time)=>{
-setTimer(time)
-setInterval(()=>{
-setTimer((timer)=> timer-1 )
-})
-    }
-
-    useEffect(()=>{
-negative(5)
-    },[timer])
-
-    {
-      useEffect(()=>{
     
+      useEffect(()=>{
+    let timeInterval
         if(timer > 0){
 
-     const timeInterval =     setInterval(()=>{
+      setInterval(()=>{
 
-          setTimer(prev=> prev -1)
+       timeInterval =   setTimer(prev=> prev -1)
         },1000)
         }
 
@@ -31,7 +20,7 @@ negative(5)
         }
         
       },[timer])
-    }
+    
   return (
     <div>
       <input>{timer} </input>

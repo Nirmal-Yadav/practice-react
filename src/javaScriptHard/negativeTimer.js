@@ -14,6 +14,24 @@ setTimer((timer)=> timer-1 )
     useEffect(()=>{
 negative(5)
     },[timer])
+
+    {
+      useEffect(()=>{
+    
+        if(timer > 0){
+
+     const timeInterval =     setInterval(()=>{
+
+          setTimer(prev=> prev -1)
+        },1000)
+        }
+
+        return  ()=>{
+          clearInterval(timeInterval)
+        }
+        
+      },[timer])
+    }
   return (
     <div>
       <input>{timer} </input>
@@ -22,3 +40,5 @@ negative(5)
 }
 
 export default negativeTimer
+
+

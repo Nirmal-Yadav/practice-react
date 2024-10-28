@@ -9,9 +9,9 @@ function negativeTimer() {
     let timeInterval
         if(timer > 0){
 
-      setInterval(()=>{
+          timeInterval = setInterval(()=>{
 
-       timeInterval =   setTimer(prev=> prev -1)
+       setTimer(prev=> prev -1)
         },1000)
         }
 
@@ -29,5 +29,6 @@ function negativeTimer() {
 }
 
 export default negativeTimer
+
 
 

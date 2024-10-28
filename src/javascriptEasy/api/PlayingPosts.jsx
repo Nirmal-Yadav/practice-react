@@ -9,10 +9,59 @@ function PlayingPosts() {
     body: "",
   });
 
+  const [input, setInput] = useState("");
+  const [id, setId] = useState();
+
+  const handleInput = (value) => {
+    console.log("e.target.value", value);
+    putData();
+    getData();
+    setInput(value);
+    console.log("posts", posts);
+  };
+
+  const throttle = (func, delay) => {
+    let timeoutId;
+    let temp = true;
+
+    return (e) => {
+      let newValue = e.target.value;
+      if (temp) {
+        console.log("second", temp);
+
+        func(newValue);
+
+        temp = false;
+        clearTimeout(timeoutId);
+      }
+
+      timeoutId = setTimeout(() => {
+        console.log("first", temp);
+        temp = true;
+      }, delay);
+    };
+  };
+
+  const handleThrottle = throttle(handleInput, 3000);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewPost((prevPost) => ({ ...prevPost, [name]: value }));
   };
+
+  const tt = 1;
+  async function putData() {
+    const data = await axios.delete(
+      `https://jsonplaceholder.typicode.com/posts/${tt}`
+      // {
+      //   userid: "45",
+      //   title: "check on",
+      //   body: "check if working",
+      // }
+    );
+    setPosts((prevPosts) => [...prevPosts, data.data]);
+    console.log("data", data);
+  }
 
   function getData() {
     axios
@@ -57,6 +106,10 @@ function PlayingPosts() {
 
   return (
     <>
+      <div>
+        <label htmlFor="input">Input</label>
+        <input name="input" onChange={handleThrottle} />
+      </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="userid">UserId: </label>
         <input
